@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <input
+        type="text"
+        placeholder="Enter city name and get weather update.."
+      />
+
+      <div class="box">
+        <!-- <div class="day"><p>Day</p></div> -->
+        <div class="image">
+          <img src="./images/icons8-cloud-lightning-100.png" alt="" />
+        </div>
+        <h1 class="temp">15<span>&deg;C</span></h1>
+        <p id="desc">Cloudy</p>
+        <p class="city">Mumbai</p>
+        <div class="summary">
+          <div class="box1">
+            <small>Wind Speed</small>
+            <p id="wind">10 m/s</p>
+          </div>
+          <div class="box1">
+            <small>Humidity</small>
+            <p id="humidity">100%</p>
+          </div>
+          <div class="box1">
+            <small>Precipitation</small>
+            <p id="preci">100%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
