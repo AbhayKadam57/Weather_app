@@ -31,7 +31,6 @@ const getWeather = (CityName) => {
       }
     });
 };
-
 input.addEventListener("keyup", async (e) => {
   document.querySelector(".errorBox")?.remove();
   if (e.key === "Enter") {
