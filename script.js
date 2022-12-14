@@ -20,7 +20,7 @@ const Error = document.querySelector(".error");
 
 const getWeather = (CityName) => {
   return new Promise((resolve, reject) => {
-    let weather = fetch(
+   fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${CityName}&appid=${YOUR_API_KEY}&units=metric`
     )
       .then((res) => res.json())
