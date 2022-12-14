@@ -32,7 +32,7 @@ const getWeather = (CityName) => {
         }
       });
 
-    return weather;
+    
   });
 };
 
