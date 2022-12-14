@@ -19,21 +19,17 @@ const wrapper = document.querySelector("#wrapper");
 const Error = document.querySelector(".error");
 
 const getWeather = (CityName) => {
-  return new Promise((resolve, reject) => {
-    let weather = fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${CityName}&appid=${YOUR_API_KEY}&units=metric`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.cod === 200) {
-          return resolve(res);
-        } else if (res.cod > 200) {
-          return reject("Please enter correct city name...");
-        }
-      });
-
-    return weather;
-  });
+  return fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${CityName}&appid=${YOUR_API_KEY}&units=metric`
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.cod === 200) {
+        return res;
+      } else if (res.cod > 200) {
+        return "Please enter correct city name...";
+      }
+    });
 };
 
 input.addEventListener("keyup", async (e) => {
