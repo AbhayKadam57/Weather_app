@@ -93,3 +93,9 @@ input {
 
     color: red;
 }
+
+h1 {
+
+    color: rgb(234, 234, 8);
+    font-size: 3em;
+}

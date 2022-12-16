@@ -18,6 +18,8 @@ const wrapper = document.querySelector("#wrapper");
 
 const Error = document.querySelector(".error");
 
+const YOUR_API_KEY = config.API_KEY;
+
 const getWeather = (CityName) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${CityName}&appid=${YOUR_API_KEY}&units=metric`
@@ -27,10 +29,11 @@ const getWeather = (CityName) => {
       if (res.cod === 200) {
         return res;
       } else if (res.cod > 200) {
-        return "Please enter correct city name...";
+        return res.message;
       }
     });
 };
+
 input.addEventListener("keyup", async (e) => {
   document.querySelector(".errorBox")?.remove();
   if (e.key === "Enter") {
@@ -40,13 +43,17 @@ input.addEventListener("keyup", async (e) => {
       let weather = await getWeather(CityName);
 
       city.innerText = weather.name;
-      temp.innerHTML = `${weather.main.temp.toFixed(1)}<span>&deg;C</span>`;
+      temp.innerHTML = `${weather.main.temp?.toFixed(1)}<span>&deg;C</span>`;
 
       wind.innerText = `${weather.wind.speed} m/s`;
 
       humidity.innerText = `${weather.main.humidity}%`;
 
-      Precipitation.innerText = weather.rain ? `${weather.rain[0]}%` : `0%`;
+      Precipitation.innerText = weather.rain
+        ? `${weather.rain["1h"]}mm`
+        : weather.snow
+        ? `${weather.snow["1h"]}mm`
+        : `0mm`;
 
       desc.innerText = weather.weather[0].description;
 
@@ -61,7 +68,7 @@ input.addEventListener("keyup", async (e) => {
 
       error.setAttribute("class", "errorBox");
 
-      error.innerHTML = `<small class='error'>${err}</small>`;
+      error.innerHTML = `<small class='error'>${"Please enter correct City name..."}</small>`;
 
       !document.querySelector(".error") && wrapper.append(error);
 
